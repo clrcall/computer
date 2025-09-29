@@ -92,8 +92,7 @@
         userName = "sen";
         userEmail = "git@sen.wtf";
     };
-
-    programs.zsh.enable = true;
+    
     programs.starship.enable = true;
     programs.fzf.enable = true;
 

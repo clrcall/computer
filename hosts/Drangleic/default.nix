@@ -10,7 +10,7 @@
     };
 
     nixpkgs.config.allowUnfree = true;
-    system.stateVersion = "25.11";
+    system.stateVersion = "25.05";
 
     time.timeZone = "Europe/Amsterdam";
     i18n.defaultLocale = "en_US.UTF-8";
@@ -56,6 +56,7 @@
     users.users.sen = {
         isNormalUser = true;
         description = "Sen";
+        shell = pkgs.zsh;
         extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
         packages = with pkgs; [
             kdePackages.kate

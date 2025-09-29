@@ -56,7 +56,7 @@
     users.users.sen = {
         isNormalUser = true;
         description = "Sen";
-        shell = pkgs.zsh;
+        shell = pkgs.fish;
         extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
         packages = with pkgs; [
             kdePackages.kate

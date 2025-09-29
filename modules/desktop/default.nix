@@ -17,6 +17,6 @@
     programs = {
         obs-studio.enable = true;
         firefox.enable = true;
-        zsh.enable = true;
+        fish.enable = true;
     };
 }

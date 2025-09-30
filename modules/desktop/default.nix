@@ -19,4 +19,7 @@
         firefox.enable = true;
         fish.enable = true;
     };
+
+    virtualisation.vmware.host.enable = true;
+    
 }

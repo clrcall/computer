@@ -1,24 +1,30 @@
-{ config, pkgs, lib, inputs, ... }:
+{
+  config,
+  pkgs,
+  lib,
+  inputs,
+  ...
+}:
 
 {
-    home.stateVersion = "25.05";
-    home.username = "sen";
-    home.homeDirectory = "/home/sen";
+  home.stateVersion = "25.05";
+  home.username = "sen";
+  home.homeDirectory = "/home/sen";
 
-    programs.git = {
-        enable = true;
-        userName = "sen";
-        userEmail = "git@sen.wtf";
-    };
-    
-    programs.starship.enable = true;
-    programs.fzf.enable = true;
+  programs.git = {
+    enable = true;
+    userName = "sen";
+    userEmail = "git@sen.wtf";
+  };
 
-    fonts.fontconfig.enable = true;
-    home.packages = [
-        pkgs.jetbrains-mono
-        pkgs.noto-fonts
-        pkgs.noto-fonts-cjk-sans
-        pkgs.noto-fonts-emoji
-    ];
+  programs.starship.enable = true;
+  programs.fzf.enable = true;
+
+  fonts.fontconfig.enable = true;
+  home.packages = [
+    pkgs.jetbrains-mono
+    pkgs.noto-fonts
+    pkgs.noto-fonts-cjk-sans
+    pkgs.noto-fonts-emoji
+  ];
 }

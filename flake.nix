@@ -1,69 +1,71 @@
 {
-    description = "Sen's NixOS";
+  description = "Sen's NixOS";
 
-    inputs = {
-        nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-        home-manager = {
-            url = "github:nix-community/home-manager/release-25.05";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
-
-        automapaper = {
-            url = "github:itepastra/automapaper";
-            inputs.nixpkgs.follows = "nixpkgs";
-        };
+  inputs = {
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    home-manager = {
+      url = "github:nix-community/home-manager/release-25.05";
+      inputs.nixpkgs.follows = "nixpkgs";
     };
+  };
 
-    outputs = { self, nixpkgs, home-manager, ... }@inputs: {
-        nixosConfigurations.Lordran = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      ...
+    }@inputs:
+    {
+      nixosConfigurations.Lordran = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-            specialArgs = {
-              inherit inputs;
-            };
-
-            modules = [
-                ./hosts/Lordran
-                ./modules/gaming
-                ./modules/dev
-                ./modules/desktop
-
-            { home-manager.extraSpecialArgs.inputs = inputs; }
-
-            home-manager.nixosModules.home-manager
-            {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.sen = import ./home/sen/home.nix;
-            }
-            ];
+        specialArgs = {
+          inherit inputs;
         };
 
-        nixosConfigurations.Drangleic = nixpkgs.lib.nixosSystem {
-            system = "x86_64-linux";
+        modules = [
+          ./hosts/Lordran
+          ./modules/gaming
+          ./modules/dev
+          ./modules/desktop
 
-            specialArgs = {
-              inherit inputs;
-            };
+          { home-manager.extraSpecialArgs.inputs = inputs; }
 
-            modules = [
-                ./hosts/Drangleic
-                ./modules/gaming
-                ./modules/dev
-                ./modules/desktop
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.sen = import ./home/sen/home.nix;
+          }
+        ];
+      };
 
-            { home-manager.extraSpecialArgs.inputs = inputs; }
+      nixosConfigurations.Drangleic = nixpkgs.lib.nixosSystem {
+        system = "x86_64-linux";
 
-            home-manager.nixosModules.home-manager
-            {
-                home-manager.useGlobalPkgs = true;
-                home-manager.useUserPackages = true;
-                home-manager.users.sen = import ./home/sen/home.nix;
-            }
-            ];
+        specialArgs = {
+          inherit inputs;
         };
 
-        formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
+        modules = [
+          ./hosts/Drangleic
+          ./modules/gaming
+          ./modules/dev
+          ./modules/desktop
+
+          { home-manager.extraSpecialArgs.inputs = inputs; }
+
+          home-manager.nixosModules.home-manager
+          {
+            home-manager.useGlobalPkgs = true;
+            home-manager.useUserPackages = true;
+            home-manager.users.sen = import ./home/sen/home.nix;
+          }
+        ];
+      };
+
+      formatter.x86_64-linux = inputs.nixpkgs.legacyPackages.x86_64-linux.nixfmt-tree;
 
     };
 }

@@ -2,66 +2,74 @@
 
 {
 
-    imports = [ ./hardware.nix ];
+  imports = [ ./hardware.nix ];
 
-    networking = {
-        hostName = "Drangleic";
-        networkmanager.enable = true;
+  networking = {
+    hostName = "Drangleic";
+    networkmanager.enable = true;
+  };
+
+  nixpkgs.config.allowUnfree = true;
+  system.stateVersion = "25.05";
+
+  time.timeZone = "Europe/Amsterdam";
+  i18n.defaultLocale = "en_US.UTF-8";
+
+  boot = {
+    loader = {
+      systemd-boot.enable = true;
+      efi.canTouchEfiVariables = true;
+    };
+    kernelPackages = pkgs.linuxPackages;
+  };
+
+  hardware = {
+    graphics = {
+      enable = true;
+    };
+    enableRedistributableFirmware = true;
+  };
+
+  services = {
+
+    xserver = {
+      enable = true;
+      xkb.layout = "us";
     };
 
-    nixpkgs.config.allowUnfree = true;
-    system.stateVersion = "25.05";
+    desktopManager.plasma6.enable = true;
+    displayManager.sddm.enable = true;
 
-    time.timeZone = "Europe/Amsterdam";
-    i18n.defaultLocale = "en_US.UTF-8";
-
-    boot = {
-        loader = {
-            systemd-boot.enable = true;
-            efi.canTouchEfiVariables = true;
-        };
-        kernelPackages = pkgs.linuxPackages;
+    pipewire = {
+      enable = true;
+      pulse.enable = true;
+      alsa.enable = true;
+      alsa.support32Bit = true;
+      jack.enable = true;
     };
+  };
 
-    hardware = {
-        graphics = {
-            enable = true;
-        };
-        enableRedistributableFirmware = true;
-    };
+  security.rtkit.enable = true;
 
-    services = {
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
-        xserver = {
-            enable = true;
-            xkb.layout = "us";
-        };
+  users.users.sen = {
+    isNormalUser = true;
+    description = "Sen";
+    shell = pkgs.fish;
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "video"
+      "audio"
+    ];
+    packages = with pkgs; [
+      kdePackages.kate
+    ];
+  };
 
-        desktopManager.plasma6.enable = true;
-        displayManager.sddm.enable = true;
-
-        pipewire = {
-            enable = true;
-            pulse.enable = true;
-            alsa.enable = true;
-            alsa.support32Bit = true;
-            jack.enable = true;
-        };
-    };
-
-    security.rtkit.enable = true;
-
-    nix.settings.experimental-features = [ "nix-command" "flakes" ];
-
-    users.users.sen = {
-        isNormalUser = true;
-        description = "Sen";
-        shell = pkgs.fish;
-        extraGroups = [ "networkmanager" "wheel" "video" "audio" ];
-        packages = with pkgs; [
-            kdePackages.kate
-        ];
-    };
-
-    security.sudo.enable = true;
+  security.sudo.enable = true;
 }

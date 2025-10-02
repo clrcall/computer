@@ -1,25 +1,5 @@
 {
   "nodes": {
-    "automapaper": {
-      "inputs": {
-        "nixpkgs": [
-          "nixpkgs"
-        ]
-      },
-      "locked": {
-        "lastModified": 1733737024,
-        "narHash": "sha256-CD5uqmMxRPaq+wkD012MSyvx0GC9BPloy2E7BGG5NWM=",
-        "owner": "itepastra",
-        "repo": "automapaper",
-        "rev": "32176bfe5d26d57e3183f73904e5b8c891818ef6",
-        "type": "github"
-      },
-      "original": {
-        "owner": "itepastra",
-        "repo": "automapaper",
-        "type": "github"
-      }
-    },
     "home-manager": {
       "inputs": {
         "nixpkgs": [
@@ -59,7 +39,6 @@
     },
     "root": {
       "inputs": {
-        "automapaper": "automapaper",
         "home-manager": "home-manager",
         "nixpkgs": "nixpkgs"
       }

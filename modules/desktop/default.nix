@@ -7,11 +7,18 @@
     avahi.enable = true;
   };
 
+  fonts.packages = with pkgs; [
+    nerd-fonts.jetbrains-mono
+    nerd-fonts.fira-code
+    nerd-fonts.meslo-lg
+  ];
+
   environment.systemPackages = with pkgs; [
     alacritty
     p7zip
     ffmpeg-full
     flameshot
+    fastfetch
     gsmartcontrol
     neofetch
     vlc
@@ -26,7 +33,6 @@
     btop
     ani-cli
     spotify
-    vmware-workstation
     rofi-wayland
   ];
 
@@ -35,7 +41,5 @@
     firefox.enable = true;
     fish.enable = true;
   };
-
-  virtualisation.vmware.host.enable = true;
 
 }

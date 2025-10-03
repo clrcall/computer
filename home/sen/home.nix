@@ -7,10 +7,12 @@
 }:
 
 {
-  home.stateVersion = "25.05";
-  home.username = "sen";
-  home.homeDirectory = "/home/sen";
-
+  home = {
+    stateVersion = "25.05";
+    username = "sen";
+    homeDirectory = "/home/sen";
+  };
+  
   imports = [
     ./hyprland/default.nix
   ];

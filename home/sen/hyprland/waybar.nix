@@ -3,10 +3,10 @@
 {
   programs.waybar = {
     enable = true;
-    reloadStyleOnChange = true;
 
     settings = {
       mainBar = {
+        reload_style_on_change = true;
         layer = "top";
         position = "top";
         height = 32;

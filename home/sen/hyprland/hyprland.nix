@@ -3,7 +3,7 @@
   wayland.windowManager.hyprland = {
     enable = true;
     settings = {
-      monitor = "eDP-1, 1920x1080x144, 0x0, 1";
+      monitor = "eDP-1, 1920x1080@144, 0x0, 1";
 
       exec-once = [
         "waybar"
@@ -55,11 +55,6 @@
         rounding = 0;
         active_opacity = 1.0;
         inactive_opacity = 1.0;
-
-        drop_shadow = true;
-        shadow_range = 5;
-        shadow_render_power = 3;
-        "col.shadow" = "rgba(1a1a1aee)";
 
         blur = {
           enabled = true;

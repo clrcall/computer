@@ -11,6 +11,10 @@
   home.username = "sen";
   home.homeDirectory = "/home/sen";
 
+  imports = [
+    ./hyprland/default.nix
+  ];
+
   programs.git = {
     enable = true;
     userName = "sen";
@@ -19,8 +23,8 @@
 
   programs.starship.enable = true;
   programs.fzf.enable = true;
-
   fonts.fontconfig.enable = true;
+
   home.packages = [
     pkgs.jetbrains-mono
     pkgs.noto-fonts

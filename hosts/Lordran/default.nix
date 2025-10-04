@@ -66,9 +66,6 @@
       "video"
       "audio"
     ];
-    packages = with pkgs; [
-      kdePackages.kate
-    ];
   };
 
   security.sudo.enable = true;
